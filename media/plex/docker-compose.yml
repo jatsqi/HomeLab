@@ -4,7 +4,7 @@ networks:
   back-tier:
 services:
   plex:
-    image: lscr.io/linuxserver/plex
+    image: plexinc/pms-docker
     networks:
       - front-tier
     environment:
@@ -13,9 +13,8 @@ services:
       - PGID=1000
       - VERSION=docker
     volumes:
-      - /plex/plex/config:/config
-      - /plex/plex/tv:/tv
-      - /plex/plex/movies:/movies
+      - /docker/appconf/plex:/config
+      - /data/media:/data/media
     ports:
       - 32400:32400
       - 1900:1900/udp
@@ -38,9 +37,8 @@ services:
       - PGID=1000
       - TZ=Europe/Berlin
     volumes:
-      - /plex/sonarr/config:/config
-      - /plex/plex/tv:/tv #optional
-      - /plex/nzbget/downloads:/downloads #optional
+      - /docker/appconf/sonarr:/config
+      - /data:/data
     ports:
       - 8989:8989
     restart: unless-stopped
@@ -51,8 +49,8 @@ services:
       - PGID=1000
       - TZ=Europe/Berlin
     volumes:
-      - /plex/nzbget/config:/config
-      - /plex/nzbget/downloads:/downloads
+      - /docker/appconf/nzbget:/config
+      - /data/usenet:/data/usenet
     ports:
       - 6789:6789
     restart: unless-stopped
