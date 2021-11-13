@@ -53,6 +53,8 @@ services:
     volumes:
       - /plex/nzbget/config:/config
       - /plex/nzbget/downloads:/downloads
+    ports:
+      - 6789:6789
     restart: unless-stopped
     networks:
       - back-tier
