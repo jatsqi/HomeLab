@@ -3,6 +3,7 @@ services:
   plex:
     image: lscr.io/linuxserver/plex
     environment:
+      - TZ=Europe/Berlin
       - PUID=1000
       - PGID=1000
       - VERSION=docker
@@ -11,7 +12,6 @@ services:
       - /plex/tv:/tv
       - /plex/movies:/movies
     ports:
-      - TZ=Europe/Berlin
       - 32400:32400
       - 1900:1900/udp
       - 3005:3005
