@@ -8,9 +8,9 @@ services:
       - PGID=1000
       - VERSION=docker
     volumes:
-      - /plex/config:/config
-      - /plex/tv:/tv
-      - /plex/movies:/movies
+      - /plex/plex/config:/config
+      - /plex/plex/tv:/tv
+      - /plex/plex/movies:/movies
     ports:
       - 32400:32400
       - 1900:1900/udp
@@ -23,3 +23,30 @@ services:
       - 32414:32414/udp
       - 32469:32469
     restart: unless-stopped
+  sonarr:
+    image: lscr.io/linuxserver/sonarr
+    container_name: sonarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Berlin
+    volumes:
+      - /plex/sonarr/config:/config
+      - /plex/plex/tv:/tv #optional
+      - /plex/nzbget/downloads:/downloads #optional
+    ports:
+      - 8989:8989
+    restart: unless-stopped
+  nzbget:
+      image: lscr.io/linuxserver/nzbget
+      container_name: nzbget
+      environment:
+        - PUID=1000
+        - PGID=1000
+        - TZ=Europe/Berlin
+      volumes:
+        - /plex/nzbget/config:/config
+        - /plex/nzbget/downloads:/downloads
+      ports:
+        - 6789:6789
+      restart: unless-stopped
