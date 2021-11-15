@@ -10,7 +10,7 @@ upstreamTimeout: 2s
 
 customDNS:
   mapping:
-    snipermonkey.de: 95.111.245.45
+    snipermonkey.de: 192.168.0.184
 
 blocking:
   blackLists:
