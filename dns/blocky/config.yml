@@ -1,0 +1,49 @@
+upstream:
+  default:
+    - 8.8.8.8
+    - 46.182.19.48
+    - 80.241.218.68
+    - tcp-tls:fdns1.dismail.de:853
+    - https://dns.digitale-gesellschaft.ch/dns-query
+
+upstreamTimeout: 2s
+
+customDNS:
+  mapping:
+    snipermonkey.de: 95.111.245.45
+
+blocking:
+  blackLists:
+    ads:
+      - https://s3.amazonaws.com/lists.disconnect.me/simple_ad.txt
+      - https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+      - https://mirror1.malwaredomains.com/files/justdomains
+      - http://sysctl.org/cameleon/hosts
+      - https://zeustracker.abuse.ch/blocklist.php?download=domainblocklist
+      - https://s3.amazonaws.com/lists.disconnect.me/simple_tracking.txt
+      - |
+        # inline definition with YAML literal block scalar style
+        # hosts format
+        someadsdomain.com
+    special:
+      - https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews/hosts
+  blockType: zeroIp
+  blockTTL: 1m
+  refreshPeriod: 4h
+  downloadTimeout: 4m
+  downloadAttempts: 5
+  downloadCooldown: 10s
+  failStartOnListError: false
+
+prometheus:
+  enable: true
+  path: /metrics
+
+port: 53
+httpPort: 4000
+bootstrapDns: tcp:1.1.1.1
+disableIPv6: false
+logLevel: debug
+logFormat: text
+logTimestamp: true
+logPrivacy: true
