@@ -5,8 +5,8 @@ services:
     container_name: blocky
     restart: unless-stopped
     ports:
-      - "53:53/tcp"
-      - "53:53/udp"
+      - "54:53/tcp"
+      - "54:53/udp"
       - "4000:4000/tcp"
     environment:
       - TZ=Europe/Berlin
