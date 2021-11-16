@@ -1,4 +1,4 @@
 tls:
   certificates:
-    - certFile: fullchain.pem
-      keyFile: privkey.pem 
+    - certFile: snipermonkey.cert
+      keyFile: snipermonkey.key
