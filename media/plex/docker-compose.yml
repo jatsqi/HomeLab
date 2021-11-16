@@ -26,6 +26,12 @@ services:
       - 32413:32413/udp
       - 32414:32414/udp
       - 32469:32469
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=32400"
+      - "traefik.http.routers.whoami.rule=Host(`plex.snipermonkey.de`)"
+      - "traefik.http.routers.whoami.entrypoints=web"
+      - "traefik.http.routers.my-app.tls=true"
     restart: unless-stopped
   sonarr:
     image: lscr.io/linuxserver/sonarr
