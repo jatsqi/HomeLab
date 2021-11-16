@@ -1,4 +1,4 @@
 tls:
   certificates:
-    - certFile: snipermonkey.cert
-      keyFile: snipermonkey.key
+    - certFile: /etc/traefik/fullchain.pem
+      keyFile: /etc/traefik/privkey.pem
