@@ -9,5 +9,5 @@ entryPoints:
   web:
     address: :443
 api:
-  insecure: false
+  insecure: true
   dashboard: true
