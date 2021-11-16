@@ -29,9 +29,9 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=32400"
-      - "traefik.http.routers.whoami.rule=Host(`plex.snipermonkey.de`)"
-      - "traefik.http.routers.whoami.entrypoints=web"
-      - "traefik.http.routers.my-app.tls=true"
+      - "traefik.http.routers.plex.rule=Host(`plex.snipermonkey.de`)"
+      - "traefik.http.routers.plex.entrypoints=web"
+      - "traefik.http.routers.plex.tls=true"
     restart: unless-stopped
   sonarr:
     image: lscr.io/linuxserver/sonarr
