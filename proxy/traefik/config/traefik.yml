@@ -10,3 +10,4 @@ entryPoints:
     address: :443
 api:
   insecure: false
+  dashboard: true
