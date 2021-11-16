@@ -2,6 +2,8 @@ version: '3.3'
 services:
   traefik:
     image: "traefik:latest"
+    networks:
+      - traefik
     volumes:
       - ./config:/etc/traefik/
       - /var/run/docker.sock:/var/run/docker.sock
@@ -9,3 +11,7 @@ services:
       - 80:80
       - 8080:8080
       - 443:443
+networks:
+  traefik:
+    name: traefik
+    driver: default
