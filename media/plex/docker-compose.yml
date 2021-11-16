@@ -28,7 +28,7 @@ services:
       - 32469:32469
     labels:
       - "traefik.enable=true"
-      - "traefik.port=32400"
+      - "traefik.http.services.plex.loadbalancer.server.port=32400"
       - "traefik.http.routers.plex.rule=Host(`plex.snipermonkey.de`)"
       - "traefik.http.routers.plex.entrypoints=web"
       - "traefik.http.routers.plex.tls=true"
