@@ -2,11 +2,6 @@ version: '3.3'
 services:
   traefik:
     image: "traefik:latest"
-    command:
-      - "--api.insecure=true"
-      - "--providers.docker=true"
-      - "--providers.docker.exposedbydefault=false"
-      - "--entrypoints.web.address=:80"
     volumes:
       - ./config:/etc/traefik/
       - /var/run/docker.sock:/var/run/docker.sock

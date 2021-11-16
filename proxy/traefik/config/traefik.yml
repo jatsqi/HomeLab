@@ -1,0 +1,12 @@
+providers:
+  docker:
+    endpoint: "unix:///var/run/docker.sock"
+    exposedByDefault: false
+  file:
+    filename: dynamic_conf.yml
+    watch: true
+entryPoints:
+  web:
+    address: :80
+api:
+  insecure: false
