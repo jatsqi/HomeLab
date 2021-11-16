@@ -7,6 +7,6 @@ providers:
     watch: true
 entryPoints:
   web:
-    address: :80
+    address: :443
 api:
   insecure: false
