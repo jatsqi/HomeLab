@@ -67,7 +67,8 @@ services:
       - back-tier
   radarr:
     image: lscr.io/linuxserver/radarr
-    container_name: radarr
+    networks:
+      - back-tier
     environment:
       - PUID=1000
       - PGID=1000
