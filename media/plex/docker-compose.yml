@@ -17,7 +17,7 @@ services:
       - VERSION=docker
     volumes:
       - /docker/appconf/plex:/config
-      - /data/media:/data/media
+      - /mnt/Media/Plex/media:/data/media
     ports:
       - 32400:32400/tcp
       - 1900:1900/udp
@@ -47,7 +47,7 @@ services:
       - TZ=Europe/Berlin
     volumes:
       - /docker/appconf/sonarr:/config
-      - /data:/data
+      - /mnt/Media/Plex:/data
     ports:
       - 8989:8989
     restart: unless-stopped
@@ -59,7 +59,7 @@ services:
       - TZ=Europe/Berlin
     volumes:
       - /docker/appconf/nzbget:/config
-      - /data/usenet:/data/usenet
+      - /mnt/Media/Plex/usenet:/data/usenet
     ports:
       - 6789:6789
     restart: unless-stopped
