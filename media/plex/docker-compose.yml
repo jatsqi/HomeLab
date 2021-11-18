@@ -53,10 +53,10 @@ services:
       - /mnt/Media/Plex:/data
     labels:
       - "traefik.enable=true"
-      - "traefik.http.services.plex.loadbalancer.server.port=8989"
-      - "traefik.http.routers.plex.rule=Host(`sonarr.snipermonkey.de`)"
-      - "traefik.http.routers.plex.entrypoints=web"
-      - "traefik.http.routers.plex.tls=true"
+      - "traefik.http.services.sonarr.loadbalancer.server.port=8989"
+      - "traefik.http.routers.sonarr.rule=Host(`sonarr.snipermonkey.de`)"
+      - "traefik.http.routers.sonarr.entrypoints=web"
+      - "traefik.http.routers.sonarr.tls=true"
     restart: unless-stopped
 
   nzbget:
@@ -70,10 +70,10 @@ services:
       - /mnt/Media/Plex/usenet:/data/usenet
     labels:
       - "traefik.enable=true"
-      - "traefik.http.services.plex.loadbalancer.server.port=6789"
-      - "traefik.http.routers.plex.rule=Host(`nzbget.snipermonkey.de`)"
-      - "traefik.http.routers.plex.entrypoints=web"
-      - "traefik.http.routers.plex.tls=true"
+      - "traefik.http.services.nzbget.loadbalancer.server.port=6789"
+      - "traefik.http.routers.nzbget.rule=Host(`nzbget.snipermonkey.de`)"
+      - "traefik.http.routers.nzbget.entrypoints=web"
+      - "traefik.http.routers.nzbget.tls=true"
     restart: unless-stopped
     networks:
       - back-tier
@@ -93,8 +93,8 @@ services:
       - /mnt/Media/Plex:/data
     labels:
       - "traefik.enable=true"
-      - "traefik.http.services.plex.loadbalancer.server.port=7878"
-      - "traefik.http.routers.plex.rule=Host(`radarr.snipermonkey.de`)"
-      - "traefik.http.routers.plex.entrypoints=web"
-      - "traefik.http.routers.plex.tls=true"
+      - "traefik.http.services.radarr.loadbalancer.server.port=7878"
+      - "traefik.http.routers.radarr.rule=Host(`radarr.snipermonkey.de`)"
+      - "traefik.http.routers.radarr.entrypoints=web"
+      - "traefik.http.routers.radarr.tls=true"
     restart: unless-stopped
