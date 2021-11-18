@@ -9,6 +9,14 @@ providers:
 entryPoints:
   web:
     address: :443
+  web_unsecure:
+    address: :80
+    http:
+      redirections:
+        entryPoint:
+          to: web
+          scheme: https
+          permanent: true
 api:
   insecure: true
   dashboard: true
