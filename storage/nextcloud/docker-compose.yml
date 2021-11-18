@@ -1,7 +1,6 @@
 version: '3'
 
 volumes:
-  nextcloud:
   db:
 
 networks:
@@ -27,11 +26,12 @@ services:
   nextcloud:
     image: nextcloud
     restart: always
+    user: 1000:1000
     networks:
       - back-tier
       - traefik
     volumes:
-      - nextcloud:/var/www/html
+      - /mnt/Media/Nextcloud/:/var/www/html
     labels:
       - "traefik.enable=true"
       - "traefik.http.services.nextcloud.loadbalancer.server.port=80"
