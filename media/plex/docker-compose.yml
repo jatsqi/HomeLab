@@ -5,6 +5,7 @@ networks:
   traefik:
     external: true
 services:
+
   plex:
     image: plexinc/pms-docker
     networks:
@@ -36,11 +37,13 @@ services:
       - "traefik.http.routers.plex.entrypoints=web"
       - "traefik.http.routers.plex.tls=true"
     restart: unless-stopped
+
   sonarr:
     image: lscr.io/linuxserver/sonarr
     networks:
       - back-tier
       - front-tier
+      - traefik
     environment:
       - PUID=1000
       - PGID=1000
@@ -48,9 +51,14 @@ services:
     volumes:
       - /docker/appconf/sonarr:/config
       - /mnt/Media/Plex:/data
-    ports:
-      - 8989:8989
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.services.plex.loadbalancer.server.port=8989"
+      - "traefik.http.routers.plex.rule=Host(`sonarr.snipermonkey.de`)"
+      - "traefik.http.routers.plex.entrypoints=web"
+      - "traefik.http.routers.plex.tls=true"
     restart: unless-stopped
+
   nzbget:
     image: lscr.io/linuxserver/nzbget
     environment:
@@ -60,15 +68,21 @@ services:
     volumes:
       - /docker/appconf/nzbget:/config
       - /mnt/Media/Plex/usenet:/data/usenet
-    ports:
-      - 6789:6789
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.services.plex.loadbalancer.server.port=6789"
+      - "traefik.http.routers.plex.rule=Host(`nzbget.snipermonkey.de`)"
+      - "traefik.http.routers.plex.entrypoints=web"
+      - "traefik.http.routers.plex.tls=true"
     restart: unless-stopped
     networks:
       - back-tier
+
   radarr:
     image: lscr.io/linuxserver/radarr
     networks:
       - back-tier
+      - traefik
     environment:
       - PUID=1000
       - PGID=1000
@@ -76,6 +90,10 @@ services:
     volumes:
       - /docker/appconf/radarr:/config
       - /mnt/Media/Plex:/data
-    ports:
-      - 7878:7878
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.services.plex.loadbalancer.server.port=7878"
+      - "traefik.http.routers.plex.rule=Host(`radarr.snipermonkey.de`)"
+      - "traefik.http.routers.plex.entrypoints=web"
+      - "traefik.http.routers.plex.tls=true"
     restart: unless-stopped
