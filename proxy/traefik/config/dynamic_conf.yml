@@ -2,3 +2,10 @@ tls:
   certificates:
     - certFile: /etc/traefik/fullchain.pem
       keyFile: /etc/traefik/privkey.pem
+http:
+  middlewares:
+    nextcloud-redirectregex:
+      redirectRegex:
+        permanent: true
+        regex: "https://(.*)/.well-known/(card|cal)dav"
+        replacement: "https://${1}/remote.php/dav/"
