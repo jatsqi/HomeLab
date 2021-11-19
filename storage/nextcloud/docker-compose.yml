@@ -38,6 +38,7 @@ services:
       - "traefik.http.routers.nextcloud.rule=Host(`storage.snipermonkey.de`)"
       - "traefik.http.routers.nextcloud.entrypoints=web"
       - "traefik.http.routers.nextcloud.tls=true"
+      - "traefik.http.routers.nextcloud.middlewares=nextcloud-redirectregex"
     environment:
       - MYSQL_PASSWORD=
       - MYSQL_DATABASE=nextcloud
