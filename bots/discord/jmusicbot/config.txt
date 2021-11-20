@@ -1,5 +1,5 @@
 token = 
 owner = 
 prefix = "!"
-game = "Benny = SIMP"
+game = "ausschließlich Rap"
 status = ONLINE
