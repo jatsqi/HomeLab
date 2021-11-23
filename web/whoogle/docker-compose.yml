@@ -9,6 +9,7 @@ services:
     pids_limit: 50
     mem_limit: 256mb
     memswap_limit: 256mb
+    command: ./run
     security_opt:
       - no-new-privileges
     cap_drop:
