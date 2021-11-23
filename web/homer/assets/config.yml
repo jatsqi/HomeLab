@@ -88,3 +88,7 @@ services:
         logo: "assets/media/radarr.svg"
         subtitle: "Radarr Movie Manager"
         url: "https://radarr.snipermonkey.de"
+      - name: "NZBGet"
+        logo: "assets/media/nzbget.png"
+        subtitle: "NZBGet Usenet Downloader"
+        url: "https://nzbget.snipermonkey.de"
