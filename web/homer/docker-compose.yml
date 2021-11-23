@@ -11,7 +11,7 @@ services:
       - GUID=1000
     labels:
       - "traefik.enable=true"
-      - "traefik.http.services.homer.loadbalancer.server.port=80"
+      - "traefik.http.services.homer.loadbalancer.server.port=8080"
       - "traefik.http.routers.homer.rule=Host(`home.snipermonkey.de`)"
       - "traefik.http.routers.homer.entrypoints=web"
       - "traefik.http.routers.homer.tls=true"
