@@ -92,3 +92,17 @@ services:
         logo: "assets/media/nzbget.png"
         subtitle: "NZBGet Usenet Downloader"
         url: "https://nzbget.snipermonkey.de"
+  - name: "Finance"
+    icon: "fas piggy-bank"
+    items:
+      - name: "Firefly III"
+        logo: "assets/media/firefly.png"
+        subtitle: "Firefly Budget Manager"
+        url: "https://finance.snipermonkey.de"
+  - name: "Tools"
+    icon: "fas tools"
+    items:
+      - name: "NextCloud"
+        logo: "assets/media/nextcloud.png"
+        subtitle: "NextCloud Storage and Organizer"
+        url: "https://storage.snipermonkey.de"
