@@ -107,6 +107,6 @@ services:
         subtitle: "NextCloud Storage and Organizer"
         url: "https://storage.snipermonkey.de"
       - name: "Whoogle"
-        icon: "fab fa-search"
+        icon: "fab fa-searchengin"
         subtitle: "Google alternative"
         url: "https://search.snipermonkey.de"
