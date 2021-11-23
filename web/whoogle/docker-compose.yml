@@ -15,6 +15,8 @@ services:
       - no-new-privileges
     cap_drop:
       - ALL
+    networks:
+      - traefik
     tmpfs:
       - /config/:size=10M,uid=102,gid=102,mode=1700
       - /var/lib/tor/:size=10M,uid=102,gid=102,mode=1700
@@ -43,3 +45,7 @@ services:
       - "traefik.http.routers.whoogle.rule=Host(`search.snipermonkey.de`)"
       - "traefik.http.routers.whoogle.entrypoints=web"
       - "traefik.http.routers.whoogle.tls=true"
+
+networks:
+  traefik:
+    external: true
