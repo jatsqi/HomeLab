@@ -17,10 +17,6 @@ services:
       - ALL
     networks:
       - traefik
-    tmpfs:
-      - /config/:size=10M,uid=102,gid=102,mode=1700
-      - /var/lib/tor/:size=10M,uid=102,gid=102,mode=1700
-      - /run/tor/:size=1M,uid=102,gid=102,mode=1700
     environment:
       - WHOOGLE_CONFIG_TOR=0
       # Basic auth configuration, uncomment to enable
