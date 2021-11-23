@@ -10,6 +10,7 @@ services:
     mem_limit: 256mb
     memswap_limit: 256mb
     command: ./run
+    user: '102'
     security_opt:
       - no-new-privileges
     cap_drop:
