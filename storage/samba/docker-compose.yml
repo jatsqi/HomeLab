@@ -20,7 +20,7 @@ services:
     tty: true
     volumes:
       - /mnt/Media/Plex:/mnt/Media/Plex:z
-    command: '-s "Mount;/mnt/Media/Plex" -s "Bobs Volume;/mnt2;yes;no;no;" -p'
+    command: '-s "Mount;/mnt/Media/Plex" -p'
 
 networks:
   default:
