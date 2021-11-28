@@ -19,7 +19,7 @@ services:
     stdin_open: true
     tty: true
     volumes:
-      - /mnt/Media/Plex:/mnt:z
+      - /mnt/Media/Plex:/mnt/Media/Plex:z
     command: '-s "Mount;/mnt/Media/Plex" -s "Bobs Volume;/mnt2;yes;no;no;" -p'
 
 networks:
