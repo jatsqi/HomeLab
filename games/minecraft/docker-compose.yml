@@ -8,6 +8,11 @@ services:
     environment:
       EULA: "TRUE"
       MOTD: "Benny stinkt."
+    volumes:
+      - "mc:/data"
     tty: true
     stdin_open: true
     restart: unless-stopped
+
+volumes:
+  mc:
