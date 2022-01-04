@@ -9,6 +9,8 @@ services:
       - WEBSOCKET_ENABLED=true  # Enable WebSocket notifications.
     volumes:
       - ./vw-data:/data
+    networks:
+      - traefik
     labels:
       - traefik.enable=true
       - traefik.docker.network=traefik
@@ -35,3 +37,7 @@ services:
 
 volumes:
   vw-data:
+
+networks:
+  traefik:
+    external: true
