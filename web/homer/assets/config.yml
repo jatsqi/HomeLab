@@ -110,3 +110,7 @@ services:
         icon: "fab fa-searchengin"
         subtitle: "Google alternative"
         url: "https://search.snipermonkey.de"
+      - name: "Bitwarden"
+        icon: "fab fa-key"
+        subtitle: "Password Manager"
+        url: "https://bitwarden.snipermonkey.de"
