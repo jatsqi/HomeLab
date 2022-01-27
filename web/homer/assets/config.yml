@@ -19,7 +19,7 @@ header: true # Set to false to hide the header
 #   search: "Shift"
 footer: "Yes, I'm a SIMP"
 
-columns: "3" # "auto" or number (must be a factor of 12: 1, 2, 3, 4, 6, 12)
+columns: "4" # "auto" or number (must be a factor of 12: 1, 2, 3, 4, 6, 12)
 connectivityCheck: true # whether you want to display a message when the apps are not accessible anymore (VPN disconnected for example)
 
 # Optional: Proxy / hosting option
@@ -92,13 +92,21 @@ services:
         logo: "assets/media/nzbget.png"
         subtitle: "NZBGet Usenet Downloader"
         url: "https://nzbget.snipermonkey.de"
-  - name: "Finance"
-    icon: "fas piggy-bank"
+  - name: "Infrastructure"
+    icon: "fas fa-plug"
     items:
-      - name: "Firefly III"
-        logo: "assets/media/firefly.png"
-        subtitle: "Firefly Budget Manager"
-        url: "https://finance.snipermonkey.de"
+      - name: "Proxmox VE"
+        logo: "assets/media/proxmox.png"
+        subtitle: "Proxmox Virtual Environment"
+        url: "https://192.168.0.31:8006"
+      - name: "AdGuard"
+        logo: "assets/media/adguard.png"
+        subtitle: "AdGuard DNS"
+        url: "http://192.168.0.34"
+      - name: "Traefik"
+        logo: "assets/media/traefik.png"
+        subtitle: "Traefik Reverse Proxy"
+        url: "http://192.168.0.184"
   - name: "Tools"
     icon: "fas tools"
     items:
@@ -114,3 +122,15 @@ services:
         icon: "fas fa-key"
         subtitle: "Password Manager"
         url: "https://bitwarden.snipermonkey.de"
+  - name: "Monitoring"
+    icon: "fas fa-clock"
+    items:
+      - name: "Prometheus"
+        logo: "assets/media/prometheus.png"
+        subtitle: "Prometheus TSDB"
+        url: "https://prometheus.snipermonkey.de"
+      - name: "Grafana"
+        logo: "assets/media/grafana.png"
+        subtitle: "Grafana Data Visualizer"
+        url: "https://grafana.snipermonkey.de"
+
