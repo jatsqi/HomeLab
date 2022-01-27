@@ -72,7 +72,7 @@ links:
 # Leave only a "items" key if not using group (group name, icon & tagstyle are optional, section separation will not be displayed).
 services:
   - name: "Media"
-    icon: "fas photo-video"
+    icon: "fas fa-video"
     # A path to an image can also be provided. Note that icon take precedence if both icon and logo are set.
     # logo: "path/to/logo"
     items:
@@ -104,11 +104,11 @@ services:
         subtitle: "AdGuard DNS"
         url: "http://192.168.0.34"
       - name: "Traefik"
-        logo: "assets/media/traefik.svg"
+        logo: "assets/media/traefik.png"
         subtitle: "Traefik Reverse Proxy"
         url: "http://192.168.0.184:8080"
   - name: "Tools"
-    icon: "fas tools"
+    icon: "fas fa-tools"
     items:
       - name: "NextCloud"
         logo: "assets/media/nextcloud.png"
