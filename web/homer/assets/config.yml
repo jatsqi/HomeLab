@@ -107,6 +107,10 @@ services:
         logo: "assets/media/traefik.png"
         subtitle: "Traefik Reverse Proxy"
         url: "http://192.168.0.184:8080"
+      - name: "AsRock IPMI"
+        logo: "assets/media/asrock.svg"
+        subtitle: "Server IPMI"
+        url: "http://192.168.0.4"
   - name: "Tools"
     icon: "fas fa-tools"
     items:
