@@ -9,6 +9,7 @@ scrape_configs:
   - job_name: "cadvisor"
     static_configs:
       - targets: ["cadvisor:8080"]
-  - job_name: "blocky"
+  - job_name: "adguard"
     static_configs:
-      - targets: ["192.168.0.34:4000"]
+      - targets: ["adguard_exporter:9617"]
+  

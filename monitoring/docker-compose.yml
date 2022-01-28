@@ -93,3 +93,20 @@ services:
       - "traefik.http.routers.grafana.entrypoints=web"
       - "traefik.http.routers.grafana.tls=true"
     restart: always
+
+  adguard_exporter:
+    image: ebrianne/adguard-exporter:latest
+    restart: always
+    secrets:
+      - my-adguard-pass
+    networks:
+      - back-tier
+    environment:
+      - adguard_protocol=http
+      - adguard_hostname=192.168.0.34
+      - adguard_username=
+      - adguard_password=
+      - adguard_port=
+      - server_port=9617
+      - interval=10s
+      - log_limit=10000
