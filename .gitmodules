@@ -1,0 +1,3 @@
+[submodule "bots/discord/MusicBot/Discord-MusicBot"]
+	path = bots/discord/MusicBot/Discord-MusicBot
+	url = https://github.com/SudhanPlayz/Discord-MusicBot
