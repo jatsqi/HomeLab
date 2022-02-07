@@ -34,7 +34,7 @@ services:
       - "traefik.http.routers.prometheus.rule=Host(`prometheus.snipermonkey.de`)"
       - "traefik.http.routers.prometheus.entrypoints=web"
       - "traefik.http.routers.prometheus.tls=true"
-    restart: always
+    restart: unless-stopped
 
   node-exporter:
     image: prom/node-exporter
@@ -51,7 +51,7 @@ services:
       - 9100:9100
     networks:
       - back-tier
-    restart: always
+    restart: unless-stopped
     deploy:
       mode: global
 
@@ -66,7 +66,7 @@ services:
       - 8081:8080
     networks:
       - back-tier
-    restart: always
+    restart: unless-stopped
     deploy:
       mode: global
 
@@ -92,11 +92,11 @@ services:
       - "traefik.http.routers.grafana.rule=Host(`grafana.snipermonkey.de`)"
       - "traefik.http.routers.grafana.entrypoints=web"
       - "traefik.http.routers.grafana.tls=true"
-    restart: always
+    restart: unless-stopped
 
   adguard_exporter:
     image: ebrianne/adguard-exporter:latest
-    restart: always
+    restart: unless-stopped
     networks:
       - back-tier
     environment:

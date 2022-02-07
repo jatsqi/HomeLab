@@ -1,7 +1,7 @@
 version: '2.2'
 services:
     sharelatex:
-        restart: always
+        restart: unless-stopped
         image: sharelatex/sharelatex
         container_name: sharelatex
         depends_on:
@@ -70,7 +70,7 @@ services:
             # SHARELATEX_EMAIL_SMTP_LOGGER: true
             # SHARELATEX_CUSTOM_EMAIL_FOOTER: "This system is run by department x"
     mongo:
-        restart: always
+        restart: unless-stopped
         image: mongo:4.0
         container_name: mongo
         networks:
@@ -84,7 +84,7 @@ services:
             retries: 5
 
     redis:
-        restart: always
+        restart: unless-stopped
         image: redis:5
         container_name: redis
         networks:
