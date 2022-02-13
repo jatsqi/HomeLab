@@ -25,6 +25,7 @@ services:
 
   nextcloud:
     image: nextcloud
+    entrypoint: sh -c "apt update && apt install -y libmagickcore-6.q16-6-extra && /entrypoint.sh apache2-foreground"
     restart: unless-stopped
     user: 1000:1000
     networks:
