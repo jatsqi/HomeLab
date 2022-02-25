@@ -1,3 +1,6 @@
 [submodule "bots/discord/MusicBot/Discord-MusicBot"]
 	path = bots/discord/MusicBot/Discord-MusicBot
 	url = https://github.com/SudhanPlayz/Discord-MusicBot
+[submodule "bots/discord/WachsamerNachbar"]
+	path = bots/discord/WachsamerNachbar
+	url = git@github.com:jatsqi/WachsamerNachbar.git
