@@ -17,6 +17,8 @@ entryPoints:
           to: web
           scheme: https
           permanent: true
+metrics:
+  prometheus: {}
 api:
   insecure: true
   dashboard: true
