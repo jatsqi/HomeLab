@@ -18,5 +18,5 @@ scrape_configs:
       - targets: ["192.168.0.184:8861"]
   - job_name: "traefik"
     static_configs:
-      - target: ["192.168.0.184:8080"]
+      - targets: ["192.168.0.184:8080"]
   
