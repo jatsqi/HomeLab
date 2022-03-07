@@ -4,11 +4,15 @@ services:
   octoprint:
     image: octoprint/octoprint
     restart: unless-stopped
-    ports:
-      - 80:80
     devices:
       - /dev/ttyACM0:/dev/ttyACM0
     volumes:
       - octoprint:/octoprint
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.services.octoprint.loadbalancer.server.port=80"
+      - "traefik.http.routers.octoprint.rule=Host(`octoprint.snipermonkey.de`)"
+      - "traefik.http.routers.octoprint.entrypoints=web"
+      - "traefik.http.routers.octoprint.tls=true"
 volumes:
   octoprint:
