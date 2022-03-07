@@ -126,6 +126,10 @@ services:
         icon: "fas fa-key"
         subtitle: "Password Manager"
         url: "https://bitwarden.snipermonkey.de"
+      - name: "OctoPrint"
+        logo: "assets/media/octoprint.png"
+        subtitle: "OctoPrint 3D Printer Manager"
+        url: "https://octoprint.snipermonkey.de"
   - name: "Monitoring"
     icon: "fas fa-clock"
     items:
