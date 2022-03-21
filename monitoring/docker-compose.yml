@@ -101,11 +101,11 @@ services:
     networks:
       - back-tier
     environment:
-      - adguard_protocol=http
+      - adguard_protocol=https
       - adguard_hostname=192.168.0.34
       - adguard_username=
       - adguard_password=
-      - adguard_port=
+      - adguard_port=443
       - server_port=9617
       - interval=10s
       - log_limit=10000
