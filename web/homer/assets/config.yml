@@ -102,7 +102,7 @@ services:
       - name: "AdGuard"
         logo: "assets/media/adguard.svg"
         subtitle: "AdGuard DNS"
-        url: "http://192.168.0.34"
+        url: "https://dns.snipermonkey.de"
       - name: "Traefik"
         logo: "assets/media/traefik.png"
         subtitle: "Traefik Reverse Proxy"
