@@ -38,6 +38,28 @@ services:
       - "traefik.http.routers.plex.tls=true"
     restart: unless-stopped
 
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin
+    container_name: jellyfin
+    volumes:
+      - ./jellyfin/config:/config
+      - /mnt/Media/Plex/media:/data/media:ro
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Berlin
+      - JELLYFIN_PublishedServerUrl=https://jellyfin.snipermonkey.de
+    ports:
+      - 7359:7359/udp #optional
+      - 1900:1900/udp #optional
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.services.jellyfin.loadbalancer.server.port=8096"
+      - "traefik.http.routers.jellyfin.rule=Host(`jellyfin.snipermonkey.de`)"
+      - "traefik.http.routers.jellyfin.entrypoints=web"
+      - "traefik.http.routers.jellyfin.tls=true"
+    restart: "unless-stopped"
+
   sonarr:
     image: lscr.io/linuxserver/sonarr
     networks:
