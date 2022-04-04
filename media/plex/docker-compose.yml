@@ -44,6 +44,8 @@ services:
     volumes:
       - ./jellyfin/config:/config
       - /mnt/Media/Plex/media:/data/media:ro
+    networks:
+      - traefik
     environment:
       - PUID=1000
       - PGID=1000
