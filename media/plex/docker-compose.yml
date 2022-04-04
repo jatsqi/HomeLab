@@ -49,9 +49,9 @@ services:
       - PGID=1000
       - TZ=Europe/Berlin
       - JELLYFIN_PublishedServerUrl=https://jellyfin.snipermonkey.de
-    ports:
-      - 7359:7359/udp #optional
-      - 1900:1900/udp #optional
+    #ports:
+      #- 7359:7359/udp #optional
+      #- 1900:1900/udp #optional
     labels:
       - "traefik.enable=true"
       - "traefik.http.services.jellyfin.loadbalancer.server.port=8096"
