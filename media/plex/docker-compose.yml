@@ -153,9 +153,6 @@ services:
       - ./jackett:/config
       - /dev/null:/downloads
     network_mode: "service:vpn"
-    networks:
-      - traefik
-      - back-tier
     labels:
       - "traefik.enable=true"
       - "traefik.http.services.jackett.loadbalancer.server.port=9117"
@@ -182,9 +179,6 @@ services:
     #  - 6881:6881
     #  - 6881:6881/udp
     network_mode: "service:vpn"
-    networks:
-      - traefik
-      - back-tier
     labels:
       - "traefik.enable=true"
       - "traefik.http.services.qbit.loadbalancer.server.port=8080"
