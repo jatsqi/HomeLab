@@ -12,4 +12,5 @@ http:
     restricted-access:
       forwardAuth:
         address: "http://ipfiler_block_external_vpn:8080/traefik"
+        trustForwardHeader: true
   
