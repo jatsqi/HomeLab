@@ -18,6 +18,7 @@ services:
             - "traefik.http.routers.overleaf.rule=Host(`latex.snipermonkey.de`)"
             - "traefik.http.routers.overleaf.entrypoints=web"
             - "traefik.http.routers.overleaf.tls=true"
+            - "traefik.http.routers.overleaf.middlewares=restricted-access"
         volumes:
             - ~/sharelatex_data:/var/lib/sharelatex
         environment:

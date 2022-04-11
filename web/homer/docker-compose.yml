@@ -15,6 +15,7 @@ services:
       - "traefik.http.routers.homer.rule=Host(`home.snipermonkey.de`)"
       - "traefik.http.routers.homer.entrypoints=web"
       - "traefik.http.routers.homer.tls=true"
+      - "traefik.http.routers.homer.middlewares=restricted-access"
     restart: unless-stopped
 
 networks:

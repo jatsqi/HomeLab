@@ -9,3 +9,7 @@ http:
         permanent: true
         regex: "https://(.*)/.well-known/(card|cal)dav"
         replacement: "https://${1}/remote.php/dav/"
+    restricted-access:
+      forwardAuth:
+        address: "http://ipfiler_block_external_vpn:8080/traefik"
+  

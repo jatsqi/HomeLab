@@ -1,4 +1,11 @@
 version: "3.0"
+
+networks:
+  front-tier:
+  back-tier:
+  traefik:
+    external: true
+
 services:
 
   plex:
@@ -76,6 +83,7 @@ services:
       - "traefik.http.routers.sonarr.rule=Host(`sonarr.snipermonkey.de`)"
       - "traefik.http.routers.sonarr.entrypoints=web"
       - "traefik.http.routers.sonarr.tls=true"
+      - "traefik.http.routers.sonarr.middlewares=restricted-access"
     restart: unless-stopped
 
   nzbget:
@@ -93,6 +101,7 @@ services:
       - "traefik.http.routers.nzbget.rule=Host(`nzbget.snipermonkey.de`)"
       - "traefik.http.routers.nzbget.entrypoints=web"
       - "traefik.http.routers.nzbget.tls=true"
+      - "traefik.http.routers.nzbget.middlewares=restricted-access"
     restart: unless-stopped
     networks:
       - back-tier
@@ -116,81 +125,53 @@ services:
       - "traefik.http.routers.radarr.rule=Host(`radarr.snipermonkey.de`)"
       - "traefik.http.routers.radarr.entrypoints=web"
       - "traefik.http.routers.radarr.tls=true"
+      - "traefik.http.routers.radarr.middlewares=restricted-access"
     restart: unless-stopped
 
-  vpn:
-    image: ghcr.io/bubuntux/nordvpn
-    cap_add:
-      - NET_ADMIN               # Required
-      - NET_RAW                 # Required
-    environment:                # Review https://github.com/bubuntux/nordvpn#environment-variables
-      - USER=user@email.com     # Required
-      - "PASS=pas$word"         # Required
-      - CONNECT=United_States
-      - TECHNOLOGY=NordLynx
-      - NETWORK=192.168.1.0/24  # So it can be accessed within the local network
-    networks:
-      - traefik
-      - back-tier
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.services.mediaVpn.loadbalancer.server.port=8080"
-      - "traefik.http.routers.mediaVpn.rule=Host(`mediavpn.snipermonkey.de`)"
-      - "traefik.http.routers.mediaVpn.entrypoints=web"
-      - "traefik.http.routers.mediaVpn.tls=true"
-    sysctls:
-      - net.ipv6.conf.all.disable_ipv6=1  # Recomended if using ipv4 only
+  # jackett:
+  #   image: lscr.io/linuxserver/jackett
+  #   container_name: jackett
+  #   environment:
+  #     - PUID=1000
+  #     - PGID=1000
+  #     - TZ=Europe/Berlin
+  #     - AUTO_UPDATE=true #optional
+  #   volumes:
+  #     - ./jackett:/config
+  #     - /dev/null:/downloads
+  #   network_mode: "service:vpn"
+  #   labels:
+  #     - "traefik.enable=true"
+  #     - "traefik.http.services.jackett.loadbalancer.server.port=9117"
+  #     - "traefik.http.routers.jackett.rule=Host(`jackett.snipermonkey.de`)"
+  #     - "traefik.http.routers.jackett.entrypoints=web"
+  #     - "traefik.http.routers.jackett.tls=true"
+  #   restart: unless-stopped
+  #   depends_on:
+  #     - vpn
 
-  jackett:
-    image: lscr.io/linuxserver/jackett
-    container_name: jackett
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Europe/Berlin
-      - AUTO_UPDATE=true #optional
-    volumes:
-      - ./jackett:/config
-      - /dev/null:/downloads
-    network_mode: "service:vpn"
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.services.jackett.loadbalancer.server.port=9117"
-      - "traefik.http.routers.jackett.rule=Host(`jackett.snipermonkey.de`)"
-      - "traefik.http.routers.jackett.entrypoints=web"
-      - "traefik.http.routers.jackett.tls=true"
-    restart: unless-stopped
-    depends_on:
-      - vpn
-
-  qbittorrent:
-    image: lscr.io/linuxserver/qbittorrent
-    container_name: qbittorrent
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Europe/Berlin
-      - WEBUI_PORT=8080
-    volumes:
-      - /docker/appconf/qbit:/config
-      - /mnt/Media/Plex/torrent:/downloads
-    #ports:
-    #  - 8080:8080
-    #  - 6881:6881
-    #  - 6881:6881/udp
-    network_mode: "service:vpn"
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.services.qbit.loadbalancer.server.port=8080"
-      - "traefik.http.routers.qbit.rule=Host(`qbit.snipermonkey.de`)"
-      - "traefik.http.routers.qbit.entrypoints=web"
-      - "traefik.http.routers.qbit.tls=true"
-    restart: unless-stopped
-    depends_on:
-      - vpn
-
-networks:
-  front-tier:
-  back-tier:
-  traefik:
-    external: true
+  # qbittorrent:
+  #   image: lscr.io/linuxserver/qbittorrent
+  #   container_name: qbittorrent
+  #   environment:
+  #     - PUID=1000
+  #     - PGID=1000
+  #     - TZ=Europe/Berlin
+  #     - WEBUI_PORT=8080
+  #   volumes:
+  #     - /docker/appconf/qbit:/config
+  #     - /mnt/Media/Plex/torrent:/downloads
+  #   #ports:
+  #   #  - 8080:8080
+  #   #  - 6881:6881
+  #   #  - 6881:6881/udp
+  #   network_mode: "service:vpn"
+  #   labels:
+  #     - "traefik.enable=true"
+  #     - "traefik.http.services.qbit.loadbalancer.server.port=8080"
+  #     - "traefik.http.routers.qbit.rule=Host(`qbit.snipermonkey.de`)"
+  #     - "traefik.http.routers.qbit.entrypoints=web"
+  #     - "traefik.http.routers.qbit.tls=true"
+  #   restart: unless-stopped
+  #   depends_on:
+  #     - vpn

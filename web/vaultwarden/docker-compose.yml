@@ -22,7 +22,7 @@ services:
       - traefik.http.routers.bitwarden-ui-https.service=bitwarden-ui
       - traefik.http.routers.bitwarden-ui-http.rule=Host(`bitwarden.snipermonkey.de`)
       - traefik.http.routers.bitwarden-ui-http.entrypoints=web_unsecure
-      - traefik.http.routers.bitwarden-ui-http.middlewares=redirect-https
+      - traefik.http.routers.bitwarden-ui-http.middlewares=redirect-https,restricted-access
       - traefik.http.routers.bitwarden-ui-http.service=bitwarden-ui
       - traefik.http.services.bitwarden-ui.loadbalancer.server.port=80
       - traefik.http.routers.bitwarden-websocket-https.rule=Host(`bitwarden.snipermonkey.de`) && Path(`/notifications/hub`)
@@ -31,7 +31,7 @@ services:
       - traefik.http.routers.bitwarden-websocket-https.service=bitwarden-websocket
       - traefik.http.routers.bitwarden-websocket-http.rule=Host(`bitwarden.snipermonkey.de`) && Path(`/notifications/hub`)
       - traefik.http.routers.bitwarden-websocket-http.entrypoints=web_unsecure
-      - traefik.http.routers.bitwarden-websocket-http.middlewares=redirect-https
+      - traefik.http.routers.bitwarden-websocket-http.middlewares=redirect-https,restricted-access
       - traefik.http.routers.bitwarden-websocket-http.service=bitwarden-websocket
       - traefik.http.services.bitwarden-websocket.loadbalancer.server.port=3012
 

@@ -46,6 +46,7 @@ services:
       - "traefik.http.routers.whoogle.rule=Host(`search.snipermonkey.de`)"
       - "traefik.http.routers.whoogle.entrypoints=web"
       - "traefik.http.routers.whoogle.tls=true"
+      - "traefik.http.routers.whoogle.middlewares=restricted-access"
 
 networks:
   traefik:
