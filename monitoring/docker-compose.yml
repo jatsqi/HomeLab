@@ -35,7 +35,7 @@ services:
       - "traefik.http.routers.prometheus.rule=Host(`prometheus.snipermonkey.de`)"
       - "traefik.http.routers.prometheus.entrypoints=web"
       - "traefik.http.routers.prometheus.tls=true"
-      - "traefik.http.routers.prometheus.middlewares=restricted-access"
+      - "traefik.http.routers.prometheus.middlewares=restricted-access@file"
     restart: unless-stopped
 
   node-exporter:
@@ -94,7 +94,7 @@ services:
       - "traefik.http.routers.grafana.rule=Host(`grafana.snipermonkey.de`)"
       - "traefik.http.routers.grafana.entrypoints=web"
       - "traefik.http.routers.grafana.tls=true"
-      - "traefik.http.routers.grafana.middlewares=restricted-access"
+      - "traefik.http.routers.grafana.middlewares=restricted-access@file"
     restart: unless-stopped
 
   adguard_exporter:

@@ -83,7 +83,7 @@ services:
       - "traefik.http.routers.sonarr.rule=Host(`sonarr.snipermonkey.de`)"
       - "traefik.http.routers.sonarr.entrypoints=web"
       - "traefik.http.routers.sonarr.tls=true"
-      - "traefik.http.routers.sonarr.middlewares=restricted-access"
+      - "traefik.http.routers.sonarr.middlewares=restricted-access@file"
     restart: unless-stopped
 
   nzbget:
@@ -101,7 +101,7 @@ services:
       - "traefik.http.routers.nzbget.rule=Host(`nzbget.snipermonkey.de`)"
       - "traefik.http.routers.nzbget.entrypoints=web"
       - "traefik.http.routers.nzbget.tls=true"
-      - "traefik.http.routers.nzbget.middlewares=restricted-access"
+      - "traefik.http.routers.nzbget.middlewares=restricted-access@file"
     restart: unless-stopped
     networks:
       - back-tier
@@ -125,7 +125,7 @@ services:
       - "traefik.http.routers.radarr.rule=Host(`radarr.snipermonkey.de`)"
       - "traefik.http.routers.radarr.entrypoints=web"
       - "traefik.http.routers.radarr.tls=true"
-      - "traefik.http.routers.radarr.middlewares=restricted-access"
+      - "traefik.http.routers.radarr.middlewares=restricted-access@file"
     restart: unless-stopped
 
   # jackett:

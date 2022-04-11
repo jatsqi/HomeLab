@@ -16,7 +16,7 @@ services:
       - "traefik.http.routers.octoprint.rule=Host(`octoprint.snipermonkey.de`)"
       - "traefik.http.routers.octoprint.entrypoints=web"
       - "traefik.http.routers.octoprint.tls=true"
-      - "traefik.http.routers.octoprint.middlewares=restricted-access"
+      - "traefik.http.routers.octoprint.middlewares=restricted-access@file"
 volumes:
   octoprint:
 networks:
