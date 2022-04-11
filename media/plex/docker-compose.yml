@@ -39,6 +39,8 @@ services:
       - "traefik.http.routers.plex.entrypoints=web"
       - "traefik.http.routers.plex.tls=true"
     restart: unless-stopped
+    profiles:
+      - donotstart
 
   jellyfin:
     image: lscr.io/linuxserver/jellyfin
