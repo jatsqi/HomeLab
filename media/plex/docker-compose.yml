@@ -164,6 +164,7 @@ services:
     #environment:
     devices:
       - /dev/net/tun:/dev/net/tun
+    restart: unless-stopped
 
   jackett:
     image: lscr.io/linuxserver/jackett
