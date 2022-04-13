@@ -155,11 +155,15 @@ services:
       - "traefik.http.routers.qbit.rule=Host(`qbit.snipermonkey.de`)"
       - "traefik.http.routers.qbit.entrypoints=web"
       - "traefik.http.routers.qbit.tls=true"
+      - "traefik.http.routers.qbit.service=qbit"
       - "traefik.http.services.jackett.loadbalancer.server.port=9117"
       - "traefik.http.routers.jackett.rule=Host(`jackett.snipermonkey.de`)"
       - "traefik.http.routers.jackett.entrypoints=web"
       - "traefik.http.routers.jackett.tls=true"
+      - "traefik.http.routers.jackett.service=jackett"
     #environment:
+    devices:
+      - /dev/net/tun:/dev/net/tun
 
   jackett:
     image: lscr.io/linuxserver/jackett
@@ -187,7 +191,7 @@ services:
       - WEBUI_PORT=8080
     volumes:
       - /docker/appconf/qbit:/config
-      - /mnt/Media/Plex/torrent:/downloads
+      - /mnt/Media/Plex/torrent:/data/torrent
     #ports:
     #  - 8080:8080
     #  - 6881:6881
