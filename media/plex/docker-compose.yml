@@ -161,6 +161,7 @@ services:
       - "traefik.http.routers.jackett.entrypoints=web"
       - "traefik.http.routers.jackett.tls=true"
       - "traefik.http.routers.jackett.service=jackett"
+      - "com.centurylinklabs.watchtower.enable=false"
     #environment:
     devices:
       - /dev/net/tun:/dev/net/tun
