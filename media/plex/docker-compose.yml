@@ -160,7 +160,6 @@ services:
       - "traefik.http.routers.nzbget.tls=true"
       - "traefik.http.routers.nzbget.service=nzbget"
       - "traefik.http.routers.nzbget.middlewares=restricted-access@file"
-      - "traefik.http.routers.jackett.service=jackett"
       - "com.centurylinklabs.watchtower.enable=false"
     #environment:
     devices:
