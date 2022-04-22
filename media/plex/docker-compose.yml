@@ -109,17 +109,8 @@ services:
     volumes:
       - /docker/appconf/nzbget:/config
       - /mnt/Media/Plex/usenet:/data/usenet
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.services.nzbget.loadbalancer.server.port=6789"
-      - "traefik.http.routers.nzbget.rule=Host(`nzbget.snipermonkey.de`)"
-      - "traefik.http.routers.nzbget.entrypoints=web"
-      - "traefik.http.routers.nzbget.tls=true"
-      - "traefik.http.routers.nzbget.middlewares=restricted-access@file"
     restart: unless-stopped
-    networks:
-      - back-tier
-      - traefik
+    network_mode: "service:gluetun"
 
   radarr:
     image: lscr.io/linuxserver/radarr
@@ -156,10 +147,19 @@ services:
       - "traefik.http.routers.qbit.entrypoints=web"
       - "traefik.http.routers.qbit.tls=true"
       - "traefik.http.routers.qbit.service=qbit"
+      - "traefik.http.routers.qbit.middlewares=restricted-access@file"
       - "traefik.http.services.jackett.loadbalancer.server.port=9117"
       - "traefik.http.routers.jackett.rule=Host(`jackett.snipermonkey.de`)"
       - "traefik.http.routers.jackett.entrypoints=web"
       - "traefik.http.routers.jackett.tls=true"
+      - "traefik.http.routers.jackett.service=jackett"
+      - "traefik.http.routers.jackett.middlewares=restricted-access@file"
+      - "traefik.http.services.nzbget.loadbalancer.server.port=6789"
+      - "traefik.http.routers.nzbget.rule=Host(`nzbget.snipermonkey.de`)"
+      - "traefik.http.routers.nzbget.entrypoints=web"
+      - "traefik.http.routers.nzbget.tls=true"
+      - "traefik.http.routers.nzbget.service=nzbget"
+      - "traefik.http.routers.nzbget.middlewares=restricted-access@file"
       - "traefik.http.routers.jackett.service=jackett"
       - "com.centurylinklabs.watchtower.enable=false"
     #environment:
