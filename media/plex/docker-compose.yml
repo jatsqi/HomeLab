@@ -216,7 +216,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.services.ombi.loadbalancer.server.port=3579"
-      - "traefik.http.routers.ombi.rule=Host(`request.jellyfin.snipermonkey.de`)"
+      - "traefik.http.routers.ombi.rule=Host(`ombi.snipermonkey.de`)"
       - "traefik.http.routers.ombi.entrypoints=web"
       - "traefik.http.routers.ombi.tls=true"
     restart: unless-stopped
