@@ -201,3 +201,22 @@ services:
     restart: unless-stopped
     depends_on:
       - gluetun
+
+  ombi:
+    image: lscr.io/linuxserver/ombi
+    container_name: ombi
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Berlin
+    networks:
+      - traefik
+    volumes:
+      - /docker/appconf/ombi:/config
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.services.ombi.loadbalancer.server.port=3579"
+      - "traefik.http.routers.ombi.rule=Host(`request.jellyfin.snipermonkey.de`)"
+      - "traefik.http.routers.ombi.entrypoints=web"
+      - "traefik.http.routers.ombi.tls=true"
+    restart: unless-stopped
