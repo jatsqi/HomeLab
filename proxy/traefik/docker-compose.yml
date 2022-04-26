@@ -21,6 +21,7 @@ services:
       - "./nginx/nginx_default.conf:/etc/nginx/conf.d/default.conf"
       - "./nginx/blocklist.conf:/etc/nginx/conf.d/ip_filter.conf"
       - "./nginx/nginx.conf:/etc/nginx/nginx.conf"
+      - "./nginx/max_body_size.conf:/etc/nginx/conf.d/max_body_size.conf"
     networks:
       - ipfilter
     restart: always
