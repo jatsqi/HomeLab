@@ -43,7 +43,7 @@ services:
       - "traefik.http.middlewares.servicests.headers.stspreload=true"
       - "traefik.http.middlewares.servicests.headers.stsseconds=31536000"
       - "traefik.http.middlewares.servicests.headers.isdevelopment=false"
-      - "traefik.http.routers.nextcloud.middlewares=nextcloud-redirectregex@file,servicests,restricted-access@file"
+      - "traefik.http.routers.nextcloud.middlewares=nextcloud-redirectregex@file,servicests"
     environment:
       - MYSQL_PASSWORD=
       - MYSQL_DATABASE=nextcloud
