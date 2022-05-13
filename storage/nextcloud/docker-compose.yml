@@ -33,7 +33,7 @@ services:
       - traefik
     volumes:
       - /mnt/Media/Nextcloud/:/var/www/html
-      - /mnt/Media/Printer/Scanner/:/mnt/Media/Printer/Scanner/
+      - /mnt/Media/Printer/Scanner/:/mnt/Media/Printer/Scanner/:ro
     labels:
       - "traefik.enable=true"
       - "traefik.http.services.nextcloud.loadbalancer.server.port=80"
