@@ -53,11 +53,12 @@ services:
       - donotstart
 
   jellyfin:
-    image: lscr.io/linuxserver/jellyfin
+    image: lscr.io/linuxserver/jellyfin:10.7.7
     container_name: jellyfin
     volumes:
       - ./jellyfin/config:/config
       - /mnt/Media/Plex/media:/data/media:ro
+      - /mnt/Media/Plex/usenet:/data/media/usenet:ro
     networks:
         traefik:
         dockerVLAN:
