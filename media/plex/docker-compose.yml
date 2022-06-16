@@ -182,6 +182,8 @@ services:
     restart: unless-stopped
     depends_on:
       - gluetun
+    profiles:
+      - donotstart
 
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent
@@ -202,6 +204,8 @@ services:
     restart: unless-stopped
     depends_on:
       - gluetun
+    profiles:
+      - donotstart
 
   ombi:
     image: lscr.io/linuxserver/ombi
