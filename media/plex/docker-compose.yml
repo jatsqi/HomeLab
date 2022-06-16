@@ -58,7 +58,7 @@ services:
     volumes:
       - ./jellyfin/config:/config
       - /mnt/Media/Plex/media:/data/media:ro
-      - /mnt/Media/Plex/usenet:/data/media/usenet:ro
+      #- /mnt/Media/Plex/usenet:/data/media/usenet:ro
     networks:
         traefik:
         dockerVLAN:
