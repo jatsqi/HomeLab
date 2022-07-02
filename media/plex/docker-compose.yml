@@ -82,7 +82,9 @@ services:
       resources:
         reservations:
           devices:
-            - capabilities: [gpu]
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
 
   sonarr:
     image: lscr.io/linuxserver/sonarr
