@@ -17,7 +17,7 @@ services:
       - ALLOW_IP_RANGE=0.0.0.0/0
       - POSTGRES_MULTIPLE_EXTENSIONS=postgis,hstore,postgis_topology,postgis_raster,pgrouting
     ports:
-      - 15432:15432
+      - 15432:5432
     networks:
       - postgres
     command: postgres -c config_file=/etc/postgresql.conf
