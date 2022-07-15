@@ -4,6 +4,7 @@ volumes:
 services:
   db:
     image: kartoza/postgis
+    user: 1000:1000
     volumes:
       - db-data:/var/lib/postgresql
       - ./postgresql:/etc/postgresql/
