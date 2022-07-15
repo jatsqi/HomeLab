@@ -1,0 +1,20 @@
+version: '3.0'
+volumes:
+  db-data:
+services:
+  db:
+    image: kartoza/postgis
+    volumes:
+      - db-data:/var/lib/postgresql
+    environment:
+      - POSTGRES_DB=gis
+      - POSTGRES_USER=${user}
+      - POSTGRES_PASS${password}
+      - ALLOW_IP_RANGE=0.0.0.0/0
+      - POSTGRES_MULTIPLE_EXTENSIONS=postgis,hstore,postgis_topology,postgis_raster,pgrouting
+    ports:
+      - 5432:5432
+    restart: on-failure
+    healthcheck:
+      test: "exit 0"
+  
