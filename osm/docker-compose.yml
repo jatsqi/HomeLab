@@ -13,7 +13,7 @@ services:
     environment:
       - POSTGRES_DB=gis
       - POSTGRES_USER=${user}
-      - POSTGRES_PASS${password}
+      - POSTGRES_PASS=${password}
       - ALLOW_IP_RANGE=0.0.0.0/0
       - POSTGRES_MULTIPLE_EXTENSIONS=postgis,hstore,postgis_topology,postgis_raster,pgrouting
     ports:
