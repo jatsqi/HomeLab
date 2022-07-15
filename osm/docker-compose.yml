@@ -4,10 +4,9 @@ volumes:
 services:
   db:
     image: kartoza/postgis
-    user: 1000:1000
     volumes:
       - db-data:/var/lib/postgresql
-      - ./postgresql:/etc/postgresql/
+      - ./postgresql.conf:/etc/postgresql.conf
     environment:
       - POSTGRES_DB=gis
       - POSTGRES_USER=${user}
@@ -16,6 +15,7 @@ services:
       - POSTGRES_MULTIPLE_EXTENSIONS=postgis,hstore,postgis_topology,postgis_raster,pgrouting
     ports:
       - 15432:15432
+    command: postgres -c config_file=/etc/postgresql.conf
     restart: on-failure
     healthcheck:
       test: "exit 0"
