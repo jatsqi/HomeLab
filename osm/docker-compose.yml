@@ -6,9 +6,7 @@ services:
     image: kartoza/postgis
     volumes:
       - db-data:/var/lib/postgresql
-      - type: bind
-        source: ./postgresql.conf
-        target: /etc/postgresql/13/main/postgresql.conf
+      - ./postgresql:/etc/postgresql/
     environment:
       - POSTGRES_DB=gis
       - POSTGRES_USER=${user}
