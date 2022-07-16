@@ -9,7 +9,7 @@ services:
     image: kartoza/postgis
     volumes:
       - db-data:/var/lib/postgresql
-      - ./postgresql.conf:/etc/postgresql.conf
+      - ./extra.conf:/settings/extra.conf
     environment:
       - POSTGRES_DB=gis
       - POSTGRES_USER=${user}
@@ -20,7 +20,6 @@ services:
       - 15432:5432
     networks:
       - postgres
-    command: postgres -c config_file=/etc/postgresql.conf
     restart: on-failure
     healthcheck:
       test: "exit 0"
