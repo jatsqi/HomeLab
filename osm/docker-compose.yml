@@ -1,6 +1,5 @@
 version: '3.0'
 volumes:
-  db-data:
   pgadmin:
 networks:
   postgres:
@@ -8,7 +7,7 @@ services:
   db:
     image: kartoza/postgis
     volumes:
-      - db-data:/var/lib/postgresql
+      - ./data:/var/lib/postgresql
       - ./extra.conf:/settings/extra.conf
     environment:
       - POSTGRES_DB=gis
