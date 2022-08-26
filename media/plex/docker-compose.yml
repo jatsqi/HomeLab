@@ -53,7 +53,7 @@ services:
       - donotstart
 
   jellyfin:
-    image: lscr.io/linuxserver/jellyfin:10.7.7
+    image: lscr.io/linuxserver/jellyfin
     container_name: jellyfin
     volumes:
       - ./jellyfin/config:/config
