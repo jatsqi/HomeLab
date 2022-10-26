@@ -1,0 +1,21 @@
+version: '3.0'
+services:
+  zoomrec:
+    image: kastldratza/zoomrec:latest
+    user: 1000:1000
+    container_name: zoomrec
+    environment:
+      - TZ=Europe/Berlin
+    networks:
+      - traefik
+    volumes:
+      - recordings:/home/zoomrec/recordings
+      - meetings.csv:/home/zoomrec/meetings.csv:ro
+    restart: unless-stopped
+    ports:
+      - 15901:15901
+    security_opt:
+      - seccomp:unconfined
+networks:
+  traefik:
+    external: true
