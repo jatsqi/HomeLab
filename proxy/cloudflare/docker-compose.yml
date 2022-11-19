@@ -3,6 +3,8 @@ services:
   cloudflare:
     image: cloudflare/cloudflared:latest
     command: "tunnel --no-autoupdate run --token ${TOKEN}"
+    networks:
+      - cf-tunnel
     restart: always
 networks:
   cf-tunnel:

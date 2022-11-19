@@ -1,0 +1,8 @@
+version: '3'
+services:
+  noip:
+    image: coppit/no-ip
+    volumes:
+      - /etc/localtime:/etc/localtime
+      - /home/HomeLab/proxy/no-ip/config:/config
+    restart: unless-stopped
