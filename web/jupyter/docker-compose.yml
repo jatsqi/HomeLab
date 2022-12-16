@@ -11,11 +11,11 @@ services:
         - traefik
       labels:
         - "traefik.enable=true"
-        - "traefik.http.services.octoprint.loadbalancer.server.port=8888"
-        - "traefik.http.routers.octoprint.rule=Host(`jupyter.snipermonkey.de`)"
-        - "traefik.http.routers.octoprint.entrypoints=web"
-        - "traefik.http.routers.octoprint.tls=true"
-        - "traefik.http.routers.octoprint.middlewares=restricted-access@file"
+        - "traefik.http.services.jupyter.loadbalancer.server.port=8888"
+        - "traefik.http.routers.jupyter.rule=Host(`jupyter.snipermonkey.de`)"
+        - "traefik.http.routers.jupyter.entrypoints=web"
+        - "traefik.http.routers.jupyter.tls=true"
+        - "traefik.http.routers.jupyter.middlewares=restricted-access@file"
 networks:
   traefik:
     external: true
