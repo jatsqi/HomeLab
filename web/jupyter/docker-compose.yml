@@ -16,6 +16,7 @@ services:
         - "traefik.http.routers.jupyter.entrypoints=web"
         - "traefik.http.routers.jupyter.tls=true"
         - "traefik.http.routers.jupyter.middlewares=restricted-access@file"
+      restart: unless-stopped
 networks:
   traefik:
     external: true
