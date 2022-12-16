@@ -1,0 +1,16 @@
+version:  '3'
+services:
+  datascience-notebook:
+      image: jupyter/datascience-notebook
+      volumes:
+        - ${LOCAL_WORKING_DIR}:/home/jovyan/work
+        - ${LOCAL_DATASETS}:/home/jovyan/work/datasets
+        - ${LOCAL_MODULES}:/home/jovyan/work/modules
+      container_name:   jupyter_notebook
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.services.octoprint.loadbalancer.server.port=8888"
+        - "traefik.http.routers.octoprint.rule=Host(`jupyter.snipermonkey.de`)"
+        - "traefik.http.routers.octoprint.entrypoints=web"
+        - "traefik.http.routers.octoprint.tls=true"
+        - "traefik.http.routers.octoprint.middlewares=restricted-access@file"
